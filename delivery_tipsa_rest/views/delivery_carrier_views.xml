@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Integration" attrs="{'invisible': ['|', ('delivery_type', '!=', 'tipsa'), ('integration_level', '!=', 'rate_and_ship')]}">
+                    <group attrs="{'required': [('delivery_type', '=', 'tipsa'), ('integration_level', '=', 'rate_and_ship')]}">
+                        <group string="WS Credentials">
+                            <field name="tipsa_token"/>
+                            <field name="tipsa_agency_code"/>
+                        </group>
+                        <group string="Service code">
+                            <field name="tipsa_service_code"/>
+                        </group>
+                        <group string="Tipsa URLs">
+                            <field name="tipsa_endpoint_url"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+			<record model="ir.cron" id="auto_validate_pickings">
+				<field name="name">Validar albaranes(Tipsa)</field>
+				<field name="interval_number">5</field>
+				<field name="interval_type">minutes</field>
+				<field name="numbercall">-1</field>
+				<field name="doall" eval="False"/>
+				<field name="model_id" ref="model_stock_picking"/>
+				<field name="state">code</field>
+				<field name="code">model.picking_auto_validate_cron()</field>
+				<field name="active" eval="False"/>
+			</record>
+		<record model="ir.cron" id="auto_picking_status_tracking_tipsa">
+				<field name="name">Seguimiento de albaranes(Tipsa)</field>
+				<field name="interval_number">5</field>
+				<field name="interval_type">minutes</field>
+				<field name="numbercall">-1</field>
+				<field name="doall" eval="False"/>
+				<field name="model_id" ref="model_stock_picking"/>
+				<field name="state">code</field>
+				<field name="code">model.tipsa_tracking_number_cron()</field>
+				<field name="active" eval="False"/>
+			</record>
+		<record model="ir.cron" id="auto_get_product_tipsa_stock">
+				<field name="name">Obtener stock de Tipsa</field>
+				<field name="interval_number">1</field>
+				<field name="interval_type">days</field>
+				<field name="numbercall">-1</field>
+				<field name="doall" eval="False"/>
+				<field name="model_id" ref="model_product_product"/>
+				<field name="state">code</field>
+				<field name="code">model.cron_update_qty_from_tipsa()</field>
+				<field name="active" eval="False"/>
+			</record>
+		<record model="ir.cron" id="auto_create_tipsa_reference">
+				<field name="name">Crear referencias en Tipsa)</field>
+				<field name="interval_number">1</field>
+				<field name="interval_type">days</field>
+				<field name="numbercall">-1</field>
+				<field name="doall" eval="False"/>
+				<field name="model_id" ref="model_product_product"/>
+				<field name="state">code</field>
+				<field name="code">model.cron_create_tipsa_reference()</field>
+				<field name="active" eval="False"/>
+			</record>
+	</data>
+</odoo>

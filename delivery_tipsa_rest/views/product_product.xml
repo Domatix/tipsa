@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <button name="action_update_quantity_on_hand" position="after">
+                <button name="update_qty_from_tipsa" type="object" string="Traer stock Tipsa" />
+                <button name="create_tipsa_reference" type="object" string="Crear referencia en Tipsa"  attrs="{'invisible': [('reference_in_tipsa', '=', True)]}"/>
+                <field name="reference_in_tipsa" invisible="1"/>
+                  <!-- <button name="get_tipsa_references" type="object" string="debug" /> -->
+            </button>
+            <!-- <field name="default_code" position="after">
+                <field name="tipsa_qty_available" readonly="1" />
+                </field> -->
+        </field>
+    </record>
+
+
+    <record id="view_product_product_tree" model="ir.ui.view">
+        <field name="name">view.product_product.tree</field>
+        <field name='inherit_id' ref='product.product_product_tree_view'/>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <field name="qty_available" position="after">
+              <field name="tipsa_qty_available" optional="show" />
+            </field>
+        </field>
+    </record>
+</odoo>
